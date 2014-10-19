@@ -2,7 +2,10 @@
   "name": "slides-grunt-bower",
   "version": "0.0.1",
   "dependencies": {
+    "html5shiv": "~3.7.2",
     "reveal.js": "~2.6.2"
+  },
+  "devDependencies": {
   },
   "ignore": [
     "**/.*",
