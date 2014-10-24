@@ -14,11 +14,11 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="components/reveal.js/css/reveal.min.css">
-		<link rel="stylesheet" href="components/reveal.js/css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="../components/reveal.js/css/reveal.min.css">
+		<link rel="stylesheet" href="../components/reveal.js/css/theme/night.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="components/reveal.js/lib/css/zenburn.css">
+		<link rel="stylesheet" href="../components/reveal.js/lib/css/zenburn.css">
 
 		<!-- Custom styles -->
 		<link rel="stylesheet" href="css/slides.css">
@@ -130,7 +130,7 @@ $ bower install http://example.com/script.js --save-dev
 					<section data-markdown>
 					    <script type="text/template">
 ##How you use packages
-##is up to you
+##is up to you ;)
 
 Use Bower together with
 
@@ -143,41 +143,152 @@ Use Bower together with
 and lots of other tools
 
 or build your own workflow with the **API**
+
+[bower.io/docs/api](http://bower.io/docs/api/)
 					    </script>
 					</section>
 				</section>
+
+				<section class="section-grunt" data-background="#FFF">
+					<section>
+						<img src="images/grunt-logo.png" alt="grunt logo" class="logo"/>
+						<h3>The JavaScript Task Runner</h3>
+						<br/>
+						<pre class="prompt bash"><code data-trim>
+$ npm install -g grunt-cli
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>package.json</h2>
+						<pre class="json"><code data-trim>
+{
+  "name": "slides-grunt-bower",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.5"
+  }
+}
+						</code></pre>
+						<br>
+						<p>Create a basic package.json file</p>
+						<pre class="prompt bash"><code data-trim>
+$ npm init
+						</code></pre>
+						<br>
+						<p>Install Grunt</p>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt --save-dev
+						</code></pre>
+
+						<aside class="notes">
+					        This file is used by npm to store metadata for projects published as npm modules. You will list grunt and the Grunt plugins your project needs as devDependencies in this file.
+					    </aside>
+					</section>
+
+					<section>
+						<h2>Gruntfile.js</h2>
+						<pre class="javascript"><code data-trim>
+module.exports = function(grunt) {
+
+  // Project configuration
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+
+    // Tasks configuration
+    uglify: { ... }
+  });
+
+  // Load Grunt plugin and tasks
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  // Custom tasks
+  grunt.registerTask('default', ['uglify']);
+
+};
+						</code></pre>
+						<br>
+						<p>Run Grunt tasks</p>
+						<pre class="prompt bash"><code data-trim>
+$ grunt
+
+$ grunt uglify
+						</code></pre>
+
+						<aside class="notes">
+							grunt.file.readJSON('package.json') imports the JSON metadata stored in package.json into the grunt config
+						</aside>						
+					</section>
+
+					<section>
+						<h2>Concatenate files</h2>
+						<h3>grunt-contrib-concat</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-concat --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+concat: {
+  options: {
+    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+  },
+  build: {
+    src: [
+      'components/reveal.js/lib/js/head.min.js',
+      'components/reveal.js/js/reveal.min.js'
+    ],
+    dest: 'src/js/slides.min.js'
+  }
+}
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+grunt.loadNpmTasks('grunt-contrib-concat');
+						</code></pre>
+					</section>
+				</section>
+
+				<section data-markdown>
+				    <script type="text/template">
+# Thank you!
+
+https://github.com/perpic/slides-grunt-bower
+					</script>
+				</section>
+
+				<section data-markdown>
+				    <script type="text/template">
+## References
+
+http://nodejs.org/
+
+http://bower.io
+
+http://gruntjs.com
+
+https://github.com/gruntjs/grunt-contrib-concat
+					</script>
+				</section>  
 			</div>
 
 		</div>
 
-		<script src="components/reveal.js/lib/js/head.min.js"></script>
-		<script src="components/reveal.js/js/reveal.min.js"></script>
+		<script src="js/slides.min.js"></script>
 
 		<script>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
 				progress: true,
 				history: true,
 				center: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				theme: Reveal.getQueryHash().theme,
+				transition: Reveal.getQueryHash().transition || 'default',
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
-
-				// Optional libraries used to extend on reveal.js
 				dependencies: [
-					{ src: 'components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 

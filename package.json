@@ -1,0 +1,19 @@
+{
+  "name": "slides-grunt-bower",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/perpic/slides-grunt-bower.git"
+  },
+  "author": "Francesc Perez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perpic/slides-grunt-bower/issues"
+  },
+  "homepage": "https://github.com/perpic/slides-grunt-bower"
+}

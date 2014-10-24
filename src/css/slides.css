@@ -19,13 +19,15 @@ pre code {
 	font-weight:bold;
 }
 
-
 .section-bower h2,
-.section-bower h3 {
+.section-bower h3,
+.section-grunt h2,
+.section-grunt h3 {
 	color: #543729;
 }
 
-.section-bower p {
+.section-bower p,
+.section-grunt p {
 	color: #333;
 }
 
