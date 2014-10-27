@@ -6,7 +6,7 @@
 
 		<title>Kickstart a web project with gruntjs and bower</title>
 
-		<meta name="description" content="Organise your dependencies and build your app">
+		<meta name="description" content="Manage your dependencies and build your app">
 		<meta name="author" content="Francesc Perez">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -15,13 +15,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="../components/reveal.js/css/reveal.min.css">
-		<link rel="stylesheet" href="../components/reveal.js/css/theme/night.css" id="theme">
-
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="../components/reveal.js/lib/css/zenburn.css">
-
-		<!-- Custom styles -->
 		<link rel="stylesheet" href="css/slides.css">
+		<link rel="stylesheet" href="css/custom.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -29,7 +24,7 @@
 				var link = document.createElement( 'link' );
 				link.rel = 'stylesheet';
 				link.type = 'text/css';
-				link.href = 'components/reveal.js/css/print/pdf.css';
+				link.href = '../components/reveal.js/css/print/pdf.css';
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
 		</script>
@@ -197,14 +192,14 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     // Tasks configuration
-    uglify: { ... }
+    concat: { ... }
   });
 
   // Load Grunt plugin and tasks
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Custom tasks
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['concat']);
 
 };
 						</code></pre>
@@ -220,19 +215,17 @@ $ grunt uglify
 							grunt.file.readJSON('package.json') imports the JSON metadata stored in package.json into the grunt config
 						</aside>						
 					</section>
+				</section>
 
-					<section>
-						<h2>Concatenate files</h2>
-						<h3>grunt-contrib-concat</h3>
-						<pre class="prompt bash"><code data-trim>
+				<section class="section-grunt" data-background="#FFF">
+					<h2>Concat</h2>
+					<h3>Concatenate files</h3>
+					<pre class="prompt bash"><code data-trim>
 $ npm install grunt-contrib-concat --save-dev
-						</code></pre>
-						<pre class="javascript"><code data-trim>
+					</code></pre>
+					<pre class="javascript"><code data-trim>
 concat: {
-  options: {
-    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-  },
-  build: {
+  slides: {
     src: [
       'components/reveal.js/lib/js/head.min.js',
       'components/reveal.js/js/reveal.min.js'
@@ -240,11 +233,28 @@ concat: {
     dest: 'src/js/slides.min.js'
   }
 }
-						</code></pre>
-						<pre class="javascript"><code data-trim>
-grunt.loadNpmTasks('grunt-contrib-concat');
-						</code></pre>
-					</section>
+					</code></pre>
+					<p><a href="github.com/gruntjs/grunt-contrib-concat">https://github.com/gruntjs/grunt-contrib-concat</a></p>
+				</section>
+
+				<section class="section-grunt" data-background="#FFF">
+					<h2>Uglify</h2>
+					<h3>Minify Javascript files</h3>
+					<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-uglify --save-dev
+					</code></pre>
+					<pre class="javascript"><code data-trim>
+uglify: {
+  markdown: {
+    src: [
+      'components/reveal.js/plugin/markdown/marked.js',
+      'components/reveal.js/plugin/markdown/markdown.js'
+    ],
+    dest: 'src/js/markdown.min.js'
+  }
+}
+					</code></pre>
+					<p><a href="github.com/gruntjs/grunt-contrib-uglify">https://github.com/gruntjs/grunt-contrib-uglify</a></p>
 				</section>
 
 				<section data-markdown>
@@ -264,8 +274,6 @@ http://nodejs.org/
 http://bower.io
 
 http://gruntjs.com
-
-https://github.com/gruntjs/grunt-contrib-concat
 					</script>
 				</section>  
 			</div>
@@ -286,8 +294,8 @@ https://github.com/gruntjs/grunt-contrib-concat
 				transition: Reveal.getQueryHash().transition || 'default',
 
 				dependencies: [
-					{ src: 'js/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'js/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'js/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '../components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});

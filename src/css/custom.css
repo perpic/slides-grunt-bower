@@ -1,0 +1,40 @@
+.logo {
+	max-width: 30% !important; 
+	border: 0 !important; 
+	box-shadow: none !important; 
+	background: transparent !important;
+}
+
+pre code {
+	color: white;
+	background: black;
+}
+
+.prompt code {
+	padding: 15px !important;
+}
+
+.section-bower h1 {
+	color: #EF5734;
+	font-weight:bold;
+}
+
+.section-bower h2,
+.section-bower h3,
+.section-grunt h2,
+.section-grunt h3 {
+	color: #543729;
+}
+
+.section-bower p,
+.section-grunt p {
+	color: #333;
+}
+
+.section-bower a:not(.image) {
+	color: #EF5734;
+}
+
+.section-bower a:not(.image):hover {
+	color: crimson;
+}
