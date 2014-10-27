@@ -15,8 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="../components/reveal.js/css/reveal.min.css">
-		<link rel="stylesheet" href="css/slides.css">
-		<link rel="stylesheet" href="css/custom.css">
+		<link rel="stylesheet" href="css/slides.min.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
@@ -208,7 +207,7 @@ module.exports = function(grunt) {
 						<pre class="prompt bash"><code data-trim>
 $ grunt
 
-$ grunt uglify
+$ grunt concat
 						</code></pre>
 
 						<aside class="notes">
@@ -218,12 +217,13 @@ $ grunt uglify
 				</section>
 
 				<section class="section-grunt" data-background="#FFF">
-					<h2>Concat</h2>
-					<h3>Concatenate files</h3>
-					<pre class="prompt bash"><code data-trim>
+					<section>
+						<h2>Concat</h2>
+						<h3>Concatenate files</h3>
+						<pre class="prompt bash"><code data-trim>
 $ npm install grunt-contrib-concat --save-dev
-					</code></pre>
-					<pre class="javascript"><code data-trim>
+						</code></pre>
+						<pre class="javascript"><code data-trim>
 concat: {
   slides: {
     src: [
@@ -233,17 +233,17 @@ concat: {
     dest: 'src/js/slides.min.js'
   }
 }
-					</code></pre>
-					<p><a href="github.com/gruntjs/grunt-contrib-concat">https://github.com/gruntjs/grunt-contrib-concat</a></p>
-				</section>
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-concat">github.com/gruntjs/grunt-contrib-concat</a></p>
+					</section>
 
-				<section class="section-grunt" data-background="#FFF">
-					<h2>Uglify</h2>
-					<h3>Minify Javascript files</h3>
-					<pre class="prompt bash"><code data-trim>
+					<section>
+						<h2>Uglify</h2>
+						<h3>Minify Javascript files</h3>
+						<pre class="prompt bash"><code data-trim>
 $ npm install grunt-contrib-uglify --save-dev
-					</code></pre>
-					<pre class="javascript"><code data-trim>
+						</code></pre>
+						<pre class="javascript"><code data-trim>
 uglify: {
   markdown: {
     src: [
@@ -253,8 +253,54 @@ uglify: {
     dest: 'src/js/markdown.min.js'
   }
 }
-					</code></pre>
-					<p><a href="github.com/gruntjs/grunt-contrib-uglify">https://github.com/gruntjs/grunt-contrib-uglify</a></p>
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-uglify">github.com/gruntjs/grunt-contrib-uglify</a></p>
+					</section>
+
+					<section>
+						<h2>CSS Min</h2>
+						<h3>Compress CSS files with clean-css</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-cssmin --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+cssmin: {
+  extraCss: {
+    src: [
+      'components/reveal.js/css/theme/night.css', 
+      'components/reveal.js/lib/css/zenburn.css'
+    ],
+    dest: 'src/css/extra.min.css'
+  }
+}
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-cssmin">github.com/gruntjs/grunt-contrib-cssmin</a></p>
+					</section>
+
+					<section>
+						<h2>LESS / SASS</h2>
+						<h3>Compile files to CSS</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-less --save-dev
+
+$ npm install grunt-contrib-sass --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+less: {
+  compileCustom: {
+    options: {
+      cleancss: true
+    },
+    src: 'src/less/custom.less',
+    dest: 'src/css/custom.min.css'
+  }
+}
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-less">github.com/gruntjs/grunt-contrib-less</a></p>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-sass">github.com/gruntjs/grunt-contrib-sass</a></p>
+					</section>
+
+
 				</section>
 
 				<section data-markdown>

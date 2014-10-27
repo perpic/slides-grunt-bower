@@ -1,0 +1,50 @@
+@defaultCodeColor: white;
+@defaultCodeBg: black;
+@bowerTitleColor: #EF5734;
+@bowerSubTitleColor: #543729;
+@bowerTextColor: #333;
+@bowerLinkHoverColor: crimson;
+
+.logo {
+	max-width: 30% !important; 
+	border: 0 !important; 
+	box-shadow: none !important; 
+	background: transparent !important;
+}
+
+pre code {
+	color: @defaultCodeColor;
+	background: @defaultCodeBg;
+}
+
+.prompt code {
+	padding: 15px !important;
+}
+
+.section-bower {
+	h1 {
+		color: @bowerTitleColor;
+		font-weight:bold;
+	}
+	h2, h3 {
+		color: @bowerSubTitleColor;
+	}
+	p {
+		color: @bowerTextColor;
+	}
+	a:not(.image) {
+		color: @bowerTitleColor;
+		&:hover {
+			color: @bowerLinkHoverColor;
+		}
+	}
+}
+
+.section-grunt {
+	h2, h3 {
+		color: @bowerSubTitleColor;
+	}
+	p {
+		color: @bowerTextColor;
+	}
+}
