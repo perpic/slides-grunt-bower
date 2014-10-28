@@ -69,6 +69,13 @@ module.exports = function(grunt) {
       }
     },
 
+    glue: {
+      icons: {
+          src: 'assets/icons/',
+          options: '--less=src/less/sprites --img=src/images/sprites --url=../images/sprites/ --namespace=icon --margin=1 --project --cachebuster-filename-only-sprites'
+      }
+    },
+
     copy: {
       revealCss: {
         src: 'components/reveal.js/css/reveal.min.css',
@@ -97,8 +104,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-glue');
 
   // Custom tasks
-  grunt.registerTask('default', ['less', 'cssmin', 'uglify', 'concat', 'copy']);
+  grunt.registerTask('default', ['glue', 'less', 'cssmin', 'uglify', 'concat', 'copy']);
 
 };

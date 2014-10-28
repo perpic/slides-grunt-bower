@@ -1,5 +1,8 @@
+assets
 build
 components
 node_modules
 src/css
 src/js
+src/images/sprites
+src/less/sprites

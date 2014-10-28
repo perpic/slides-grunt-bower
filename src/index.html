@@ -318,6 +318,32 @@ copy: {
 						</code></pre>
 						<p><a href="https://github.com/gruntjs/grunt-contrib-copy">github.com/gruntjs/grunt-contrib-copy</a></p>
 					</section>
+
+					<section>
+						<h2>Sprites</h2>
+						<h3>Generate CSS sprites with Glue</h3>
+						<div class="sprites-demo clearfix">
+							<div class="icon icon-social-git"></div>
+							<div class="icon icon-social-twitter"></div>
+							<div class="icon icon-social-linkedin"></div>
+						</div>
+						
+						<pre class="prompt bash"><code data-trim>
+# Glue requires Python and Pillow
+$ sudo pip install glue
+
+$ npm install grunt-glue --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+glue: {
+  icons: {
+      src: 'assets/icons/',
+      options: '--less=src/less/sprites --img=src/images/sprites --url=../images/sprites/ --namespace=icon --margin=1 --project --cachebuster-filename-only-sprites'
+  }
+},
+						</code></pre>
+						<p><a href="https://bitbucket.org/carkraus/grunt-glue">bitbucket.org/carkraus/grunt-glue</a></p>
+					</section>
 				</section>
 
 				<section data-markdown>
