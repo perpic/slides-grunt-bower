@@ -14,7 +14,7 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="../components/reveal.js/css/reveal.min.css">
+		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/slides.min.css">
 
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -23,13 +23,13 @@
 				var link = document.createElement( 'link' );
 				link.rel = 'stylesheet';
 				link.type = 'text/css';
-				link.href = '../components/reveal.js/css/print/pdf.css';
+				link.href = 'css/print.min.css';
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
 			}
 		</script>
 
 		<!--[if lt IE 9]>
-		<script src="components/html5shiv/dist/html5shiv.js"></script>
+		<script src="js/html5shiv.min.js"></script>
 		<![endif]-->
 	</head>
 
@@ -300,14 +300,31 @@ less: {
 						<p><a href="https://github.com/gruntjs/grunt-contrib-sass">github.com/gruntjs/grunt-contrib-sass</a></p>
 					</section>
 
-
+					<section>
+						<h2>COPY</h2>
+						<h3>Copy files and folders</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-copy --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+copy: {
+  notesJs: {
+    expand: true,
+    cwd: 'components/reveal.js/plugin/notes/',
+    src: ['notes.html', 'notes.js'],
+    dest: 'src/js/notes/'
+  }
+}
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-copy">github.com/gruntjs/grunt-contrib-copy</a></p>
+					</section>
 				</section>
 
 				<section data-markdown>
 				    <script type="text/template">
 # Thank you!
 
-https://github.com/perpic/slides-grunt-bower
+[github.com/perpic/slides-grunt-bower](https://github.com/perpic/slides-grunt-bower)
 					</script>
 				</section>
 
@@ -315,11 +332,11 @@ https://github.com/perpic/slides-grunt-bower
 				    <script type="text/template">
 ## References
 
-http://nodejs.org/
+[nodejs.org](http://nodejs.org/)
 
-http://bower.io
+[bower.io](http://bower.io)
 
-http://gruntjs.com
+[gruntjs.com](http://gruntjs.com)
 					</script>
 				</section>  
 			</div>
@@ -341,8 +358,8 @@ http://gruntjs.com
 
 				dependencies: [
 					{ src: 'js/markdown.min.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'js/highlight.min.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'js/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 
