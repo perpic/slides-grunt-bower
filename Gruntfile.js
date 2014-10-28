@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     less: {
-      compileCustom: {
+      compile: {
         options: {
           cleancss: true
         },
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
       slidesCss: {
         src: [
           '<%= cssmin.extraCss.dest %>',
-          '<%= less.compileCustom.dest %>'
+          '<%= less.compile.dest %>'
         ],
         dest: 'src/css/slides.min.css'
       }
@@ -73,6 +73,17 @@ module.exports = function(grunt) {
       icons: {
           src: 'assets/icons/',
           options: '--less=src/less/sprites --img=src/images/sprites --url=../images/sprites/ --namespace=icon --margin=1 --project --cachebuster-filename-only-sprites'
+      }
+    },
+
+    watch: {
+      less: {
+        files: 'src/less/**/*.less',
+        tasks: ['less:compile', 'concat:slidesCss']
+      },
+      images: {
+        files: 'assets/**/*.png',
+        tasks: ['glue', 'less:compile', 'concat:slidesCss']
       }
     },
 
@@ -95,18 +106,26 @@ module.exports = function(grunt) {
           { src: 'src/index.html', dest: 'build/index.html' },
         ]
       }
+    },
+
+    clean: {
+      src: ['src/css', 'src/js', 'src/images/sprites', 'src/less/sprites'],
+      build: ['build']
     }
   });
 
   // Grunt plugins and tasks
+  grunt.loadNpmTasks('grunt-glue');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-glue');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-devtools');
 
   // Custom tasks
-  grunt.registerTask('default', ['glue', 'less', 'cssmin', 'uglify', 'concat', 'copy']);
+  grunt.registerTask('default', ['clean', 'glue', 'less', 'cssmin', 'uglify', 'concat', 'copy']);
 
 };

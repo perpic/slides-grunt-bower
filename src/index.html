@@ -278,29 +278,6 @@ cssmin: {
 					</section>
 
 					<section>
-						<h2>LESS / SASS</h2>
-						<h3>Compile files to CSS</h3>
-						<pre class="prompt bash"><code data-trim>
-$ npm install grunt-contrib-less --save-dev
-
-$ npm install grunt-contrib-sass --save-dev
-						</code></pre>
-						<pre class="javascript"><code data-trim>
-less: {
-  compileCustom: {
-    options: {
-      cleancss: true
-    },
-    src: 'src/less/custom.less',
-    dest: 'src/css/custom.min.css'
-  }
-}
-						</code></pre>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-less">github.com/gruntjs/grunt-contrib-less</a></p>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-sass">github.com/gruntjs/grunt-contrib-sass</a></p>
-					</section>
-
-					<section>
 						<h2>COPY</h2>
 						<h3>Copy files and folders</h3>
 						<pre class="prompt bash"><code data-trim>
@@ -320,14 +297,31 @@ copy: {
 					</section>
 
 					<section>
-						<h2>Sprites</h2>
-						<h3>Generate CSS sprites with Glue</h3>
-						<div class="sprites-demo clearfix">
-							<div class="icon icon-social-git"></div>
-							<div class="icon icon-social-twitter"></div>
-							<div class="icon icon-social-linkedin"></div>
-						</div>
-						
+						<img class="logo less-logo" src="images/less-logo.png" alt="less" />
+						<img class="logo sass-logo" src="images/sass-logo.png" alt="sass" />
+						<h3>Compile files to CSS</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-less --save-dev
+
+$ npm install grunt-contrib-sass --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+less: {
+  compileCustom: {
+    options: {
+      cleancss: true
+    },
+    src: 'src/less/custom.less',
+    dest: 'src/css/custom.min.css'
+  }
+}
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-less">github.com/gruntjs/grunt-contrib-less</a> / <a href="https://github.com/gruntjs/grunt-contrib-sass">grunt-contrib-sass</a></p>
+					</section>
+
+					<section>
+						<h2>CSS Sprites</h2>
+						<h3>Generate sprites with Glue</h3>
 						<pre class="prompt bash"><code data-trim>
 # Glue requires Python and Pillow
 $ sudo pip install glue
@@ -340,10 +334,70 @@ glue: {
       src: 'assets/icons/',
       options: '--less=src/less/sprites --img=src/images/sprites --url=../images/sprites/ --namespace=icon --margin=1 --project --cachebuster-filename-only-sprites'
   }
-},
+}
 						</code></pre>
 						<p><a href="https://bitbucket.org/carkraus/grunt-glue">bitbucket.org/carkraus/grunt-glue</a></p>
+						<br>
+						<div class="sprites-demo clearfix">
+							<div class="icon icon-social-git"></div>
+							<div class="icon icon-social-twitter"></div>
+							<div class="icon icon-social-linkedin"></div>
+						</div>
 					</section>
+
+					<section>
+						<h2>Watch</h2>
+						<h3>Run tasks whenever watched files change</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-watch --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+watch: {
+  less: {
+    files: 'src/less/**/*.less',
+    tasks: ['less:compile', 'concat:slidesCss']
+  },
+  images: {
+    files: 'assets/**/*.png',
+    tasks: ['glue', 'less:compile', 'concat:slidesCss']
+  }
+}
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-watch">github.com/gruntjs/grunt-contrib-watch</a></p>
+					</section>
+
+					<section class="devtools-section">
+						<h2 class="demo"><img class="logo chrome-logo" src="images/chrome-logo.png" alt="less" /> DevTools</h2>
+						<h3>Grunt Task Runner Extension</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-devtools --save-dev
+						</code></pre>
+						<p>Add plugin to your Gruntfile</p>
+						<pre class="javascript"><code data-trim>
+grunt.loadNpmTasks('grunt-devtools');
+						</code></pre>
+						<p>Run Grunt devtools task</p>
+						<pre class="prompt bash"><code data-trim>
+$ grunt devtools
+						</code></pre>
+						<p>Open Chrome Dev tools. Find the Grunt tab</p>
+						<p><a href="https://github.com/vladikoff/grunt-devtools">github.com/vladikoff/grunt-devtools</a></p>
+					</section>
+
+					<section>
+						<h2>Clean</h2>
+						<h3>Clear files and folders</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-clean --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+clean: {
+  src: ['src/css', 'src/js', 'src/images/sprites', 'src/less/sprites'],
+  build: ['build']
+}
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-clean">github.com/gruntjs/grunt-contrib-clean</a></p>
+					</section>		
 				</section>
 
 				<section data-markdown>
