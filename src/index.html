@@ -283,25 +283,6 @@ cssmin: {
 					</section>
 
 					<section>
-						<h2>COPY</h2>
-						<h3>Copy files and folders</h3>
-						<pre class="prompt bash"><code data-trim>
-$ npm install grunt-contrib-copy --save-dev
-						</code></pre>
-						<pre class="javascript"><code data-trim>
-copy: {
-  notesJs: {
-    expand: true,
-    cwd: 'components/reveal.js/plugin/notes/',
-    src: ['notes.html', 'notes.js'],
-    dest: 'src/js/notes/'
-  }
-}
-						</code></pre>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-copy">github.com/gruntjs/grunt-contrib-copy</a></p>
-					</section>
-
-					<section>
 						<img class="logo less-logo" src="images/min/less-logo.png" alt="less" />
 						<img class="logo sass-logo" src="images/min/sass-logo.png" alt="sass" />
 						<h3>Compile files to CSS</h3>
@@ -419,6 +400,25 @@ $ grunt devtools
 					</section>
 
 					<section>
+						<h2>Copy</h2>
+						<h3>Copy files and folders</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-copy --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+copy: {
+  notesJs: {
+    expand: true,
+    cwd: 'components/reveal.js/plugin/notes/',
+    src: ['notes.html', 'notes.js'],
+    dest: 'src/js/notes/'
+  }
+}
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-copy">github.com/gruntjs/grunt-contrib-copy</a></p>
+					</section>
+
+					<section>
 						<h2>Clean</h2>
 						<h3>Clear files and folders</h3>
 						<pre class="prompt bash"><code data-trim>
@@ -431,7 +431,24 @@ clean: {
 }
 						</code></pre>
 						<p><a href="https://github.com/gruntjs/grunt-contrib-clean">github.com/gruntjs/grunt-contrib-clean</a></p>
-					</section>		
+					</section>
+
+					<section>
+						<h2>Unit Testing</h2>
+						<h3>Run unit tests in<br>a headless PhantomJS instance</h3>
+						<br>
+						<h3>QUnit</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-qunit --save-dev
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-qunit">github.com/gruntjs/grunt-contrib-qunit</a></p>
+						<br>
+						<h3>Jasmine</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-jasmine --save-dev
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-jasmine">github.com/gruntjs/grunt-contrib-jasmine</a></p>
+					</section>
 				</section>
 
 				<section data-markdown>
