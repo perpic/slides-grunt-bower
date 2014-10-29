@@ -49,7 +49,7 @@
 
 				<section class="section-bower" data-background="#FFCC2F">
 					<section>
-						<img src="images/bower-logo.png" alt="bower logo" class="logo"/>
+						<img src="images/min/bower-logo.png" alt="bower logo" class="logo"/>
 						<h1>Bower.io</h1>
 						<h3>A package manager for the web</h3>
 						<br/>
@@ -145,7 +145,7 @@ or build your own workflow with the **API**
 
 				<section class="section-grunt" data-background="#FFF">
 					<section>
-						<img src="images/grunt-logo.png" alt="grunt logo" class="logo"/>
+						<img src="images/min/grunt-logo.png" alt="grunt logo" class="logo"/>
 						<h3>The JavaScript Task Runner</h3>
 						<br/>
 						<pre class="prompt bash"><code data-trim>
@@ -217,6 +217,11 @@ $ grunt concat
 				</section>
 
 				<section class="section-grunt" data-background="#FFF">
+					<section>
+						<img src="images/min/grunt-logo.png" alt="grunt logo" class="logo"/>
+						<h3>Plugins and tasks</h3>
+					</section>
+
 					<section>
 						<h2>Concat</h2>
 						<h3>Concatenate files</h3>
@@ -297,8 +302,8 @@ copy: {
 					</section>
 
 					<section>
-						<img class="logo less-logo" src="images/less-logo.png" alt="less" />
-						<img class="logo sass-logo" src="images/sass-logo.png" alt="sass" />
+						<img class="logo less-logo" src="images/min/less-logo.png" alt="less" />
+						<img class="logo sass-logo" src="images/min/sass-logo.png" alt="sass" />
 						<h3>Compile files to CSS</h3>
 						<pre class="prompt bash"><code data-trim>
 $ npm install grunt-contrib-less --save-dev
@@ -324,7 +329,7 @@ less: {
 						<h3>Generate sprites with Glue</h3>
 						<pre class="prompt bash"><code data-trim>
 # Glue requires Python and Pillow
-$ sudo pip install glue
+$ pip install glue
 
 $ npm install grunt-glue --save-dev
 						</code></pre>
@@ -343,6 +348,33 @@ glue: {
 							<div class="icon icon-social-twitter"></div>
 							<div class="icon icon-social-linkedin"></div>
 						</div>
+					</section>
+
+					<section>
+						<h2>Optimise Images</h2>
+						<h3>Minify PNG and JPEG images</h3>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-imagemin --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+imagemin: {
+  png: {
+    options: {
+      optimizationLevel: 7
+    },
+    files: [
+      {
+        expand: true,
+        cwd: 'assets/images/',
+        src: ['**/*.png'],
+        dest: 'src/images/min/',
+        ext: '.png'
+      }
+    ]
+  }
+}
+						</code></pre>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-imagemin">github.com/gruntjs/grunt-contrib-imagemin</a></p>
 					</section>
 
 					<section>
@@ -367,15 +399,17 @@ watch: {
 					</section>
 
 					<section class="devtools-section">
-						<h2 class="demo"><img class="logo chrome-logo" src="images/chrome-logo.png" alt="less" /> DevTools</h2>
+						<h2 class="demo"><img class="logo chrome-logo" src="images/min/chrome-logo.png" alt="less" /> DevTools</h2>
 						<h3>Grunt Task Runner Extension</h3>
 						<pre class="prompt bash"><code data-trim>
 $ npm install grunt-devtools --save-dev
 						</code></pre>
+						<br>
 						<p>Add plugin to your Gruntfile</p>
 						<pre class="javascript"><code data-trim>
 grunt.loadNpmTasks('grunt-devtools');
 						</code></pre>
+						<br>
 						<p>Run Grunt devtools task</p>
 						<pre class="prompt bash"><code data-trim>
 $ grunt devtools
