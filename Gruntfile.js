@@ -94,6 +94,9 @@ module.exports = function(grunt) {
     },
 
     watch: {
+      options: {
+        livereload: true,
+      },
       less: {
         files: 'src/less/**/*.less',
         tasks: ['less:compile', 'concat:slidesCss']
