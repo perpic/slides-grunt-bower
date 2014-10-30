@@ -72,7 +72,7 @@ module.exports = function(grunt) {
     glue: {
       icons: {
           src: 'assets/icons/',
-          options: '--less=src/less/sprites --img=src/images/sprites --url=../images/sprites/ --namespace=icon --margin=1 --project --cachebuster-filename-only-sprites'
+          options: '--less=src/less/sprites --img=src/images/sprites --url=../images/sprites/ --namespace=icon --margin=1 --project --retina' //--cachebuster-filename-only-sprites
       }
     },
 
@@ -148,5 +148,6 @@ module.exports = function(grunt) {
 
   // Custom tasks
   grunt.registerTask('default', ['clean', 'imagemin', 'glue', 'less', 'cssmin', 'uglify', 'concat', 'copy']);
+  grunt.registerTask('compile-less', ['less:compile', 'concat:slidesCss']);
 
 };

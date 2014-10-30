@@ -2,17 +2,16 @@
 @defaultCodeBg: black;
 @bowerTitleColor: #EF5734;
 @bowerSubTitleColor: #543729;
-@bowerTextColor: #333;
 @bowerLinkHoverColor: crimson;
+@gruntSubTitleColor: #463014;
+@textColor: black;
 
-@import 'sprites/social.less';
+@import 'sprites/gb.less';
 @import 'demo.less';
 
-.logo {
-	max-width: 30% !important; 
-	border: 0 !important; 
-	box-shadow: none !important; 
-	background: transparent !important;
+.column {
+	float: left;
+	width: 50%;
 }
 
 pre code {
@@ -24,6 +23,29 @@ pre code {
 	padding: 15px !important;
 }
 
+.reveal section {
+	.logo {
+		max-width: 30%;
+		border: 0;
+		box-shadow: none;
+		background: transparent;
+	}
+	.less-logo,
+	.sass-logo {
+		max-width: 175px;
+	}
+	.gulp-logo {
+		max-height: 300px;
+	}
+	.chrome-logo {
+		max-height: 60px;
+		margin: 0;
+	}
+	.watch-demo {
+		padding: 5px 0;
+	}
+}
+
 .section-bower {
 	h1 {
 		color: @bowerTitleColor;
@@ -33,7 +55,7 @@ pre code {
 		color: @bowerSubTitleColor;
 	}
 	p {
-		color: @bowerTextColor;
+		color: @textColor;
 	}
 	a:not(.image) {
 		color: @bowerTitleColor;
@@ -45,30 +67,15 @@ pre code {
 
 .section-grunt {
 	h2, h3 {
-		color: @bowerSubTitleColor;
+		color: @gruntSubTitleColor;
 	}
 	p {
-		color: @bowerTextColor;
-	}
-	.less-logo,
-	.sass-logo {
-		max-height: 70px;
-	}
-	.chrome-logo {
-		max-height: 50px;
-		margin: 0;
-		vertical-align: middle;
+		color: @textColor;
 	}
 }
 
-.sprites-demo {
-	width: 228px;
-	margin: 0 auto !important;
-
-	.icon {
-		float: left;
-		margin: 0 1px;
-	}
+.sprites-demo .icon {
+	display: inline-block;
 }
 
 .clearfix:after {
