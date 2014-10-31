@@ -3,5 +3,6 @@ components
 node_modules
 src/css
 src/js
+src/images/min
 src/images/sprites
 src/less/sprites
