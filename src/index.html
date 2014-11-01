@@ -66,7 +66,6 @@
 					
 					<section>
 						<h1>Tooling</h1>
-						<h3>=</h3>
 						<h2 class="higher">Engineering</h2>
 					</section>
 					
@@ -145,7 +144,7 @@
 						<br>
 						<h3>Lint</h3>
 						<h3>Unit Test</h3>
-						<h3>Minify and concat</h3>
+						<h3>Minify and Concat</h3>
 						<h3>Optimise</h3>
 						<h3>Deploy</h3>
 					</section>
@@ -159,9 +158,9 @@
 						<p class="author">-- Jeff Atwood, 2007</p>
 						<blockquote>
 "Any application that can<br>
-be written in <b>javascript</b>,<br>
+be written in <b class="higher">javascript</b>,<br>
 will eventually<br>
-be written in <b>javascript</b>"<br></blockquote>
+be written in <b class="higher">javascript</b>"<br></blockquote>
 						<div class="fragment">
 							<img class="logo" src="images/svg/nodejs-logo.svg" alt="">
 							<pre class="prompt bash"><code data-trim>
@@ -169,6 +168,10 @@ $ npm install
 							</code></pre>
 						</div>
 					</section>
+				</section>
+
+				<section data-background="#202020">
+					<h1 class="higher">Setup</h1>
 				</section>
 
 				<section class="section-bower" data-background="#FFCC2F">
@@ -188,82 +191,53 @@ $ npm install -g bower
 						
 					<section>
 						<h2>bower.json</h2>
+						<pre class="prompt bash"><code data-trim>
+# Create bower.json file and install a package
+$ bower init
+$ bower install hakimel/reveal.js --save
+						</code></pre>
 						<pre class="json"><code data-trim>
 {
   "name": "slides-grunt-bower",
   "version": "0.0.1",
   "dependencies": {
-    "html5shiv": "~3.7.2",
     "reveal.js": "~2.6.2"
-  },
-  "devDependencies": {
   }
 }
 						</code></pre>
-						<br>
-						<p>Create bower.json</p>
 						<pre class="prompt bash"><code data-trim>
-$ bower init
-						</code></pre>
-						<br>
-						<p>Bower installs packages to components/</p>
-						<pre class="prompt bash"><code data-trim>
+# Install all dependencies on bower.json
 $ bower install
 						</code></pre>
 					</section>
 
 					<section>
-						<h2>Install packages</h2>
-						<p>A package can be a Bower registered package name,<br>a GitHub shorthand, a Git endpoint, or a URL</p>
-						<pre class="prompt bash"><code data-trim>
-# Add into bower.json dependencies
-
-$ bower install jquery --save
-
-$ bower install hakimel/reveal.js --save
-
-# Add into bower.json devDependencies
-
-$ bower install https://github.com/ariya/phantomjs.git --save-dev
-
-$ bower install http://example.com/script.js --save-dev
-						</code></pre>
-						<p>Search Bower registered packages:</p>
-						<p><a target="_blank" href="http://bower.io/search/">bower.io/search</a></p>
-					</section>
-
-					<section>
-						<h2>Configure Bower</h2>
-						<h3>.bowerrc</h3>
+						<h2>.bowerrc</h2>
+						<h3>Configure Bower</h3>
 						<pre class="json"><code data-trim>
 {
   "directory": "app/components/",
   "analytics": false
 }
 						</code></pre>
-						<p>More info:</p>
-						<p><a target="_blank" href="http://bower.io/docs/config/">bower.io/docs/config</a></p>
 					</section>
 
-					<section data-markdown>
-					    <script type="text/template">
-##How you use packages
-##is up to you ;)
+					<section>
+						<h2>Search packages</h2>
+						<pre class="prompt bash"><code data-trim>
+$ bower search [name]
+						</code></pre>
+						<img class="chrome-window" src="images/min/bower-search.png" alt="">
+					</section>
 
-Use Bower together with
+					<section>
+						<h2>Install packages</h2>
+						<h3>Git, HTTP(s), zip, npm</h3>
+						<pre class="prompt prompt-no-comments bash"><code data-trim>
+$ bower install [package] --save
 
-**Grunt**,
-
-**RequireJS**,
-
-**Yeoman**,
-
-and lots of other tools
-
-or build your own workflow with the **API**
-
-[bower.io/docs/api](http://bower.io/docs/api/)
-					    </script>
+$ bower install [package]#[version] --save
+						</code></pre>
 					</section>
 				</section>
 
@@ -278,6 +252,12 @@ $ npm install -g grunt-cli
 					</section>
 
 					<section>
+						<h2>Helps run repetitive tasks</h2>
+						<br>
+						<h2 class="fragment">Alternative to<br>Rake/Cake/Make/Ant</h2>
+					</section>
+
+					<section>
 						<h2>package.json</h2>
 						<pre class="json"><code data-trim>
 {
@@ -289,14 +269,11 @@ $ npm install -g grunt-cli
   }
 }
 						</code></pre>
-						<br>
-						<p>Create a basic package.json file</p>
 						<pre class="prompt bash"><code data-trim>
+# Create a basic package.json file
 $ npm init
-						</code></pre>
-						<br>
-						<p>Install Grunt</p>
-						<pre class="prompt bash"><code data-trim>
+
+# Install Grunt
 $ npm install grunt --save-dev
 						</code></pre>
 
@@ -309,28 +286,20 @@ $ npm install grunt --save-dev
 						<h2>Gruntfile.js</h2>
 						<pre class="javascript"><code data-trim>
 module.exports = function(grunt) {
-
-  // Project configuration
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    // Tasks configuration
-    concat: { ... }
+    concat: { /* Task config */ } 
   });
 
-  // Load Grunt plugins
   grunt.loadNpmTasks('grunt-contrib-concat');
 
-  // Custom tasks
   grunt.registerTask('default', ['concat']);
-
 };
 						</code></pre>
-						<br>
-						<p>Run Grunt tasks</p>
 						<pre class="prompt bash"><code data-trim>
+# Run Grunt tasks
 $ grunt
-
 $ grunt concat
 						</code></pre>
 
@@ -338,83 +307,40 @@ $ grunt concat
 							grunt.file.readJSON('package.json') imports the JSON metadata stored in package.json into the grunt config
 						</aside>						
 					</section>
+
+					<section>
+						<h2>Huge ecosystem</h2>
+						<img class="chrome-window" src="images/min/grunt-plugins.png" alt="grunt plugins">
+					</section>
 				</section>
 
 				<section data-background="#202020">
 					<section>
-						<h2>Grunt plugins</h2>
-						<img src="images/gif/yeah.gif" alt=""/>
-						<h3>Oh Yeah!</h3>
+						<h1 class="higher">Develop</h1>
 					</section>
 
 					<section>
-						<h2>Concat</h2>
-						<h3>Concatenate files</h3>
+						<h2>Grunt Devtools <img class="logo chrome-logo" src="images/min/chrome-logo.png" alt="" /></h2>
+						<p><a href="https://github.com/vladikoff/grunt-devtools">github.com/vladikoff/grunt-devtools</a> / <a href="https://chrome.google.com/webstore/detail/grunt-devtools/fbiodiodggnlakggeeckkjccjhhjndnb?hl=en">Chrome extension</a></p>
 						<pre class="prompt bash"><code data-trim>
-$ npm install grunt-contrib-concat --save-dev
+$ npm install grunt-devtools --save-dev
 						</code></pre>
 						<pre class="javascript"><code data-trim>
-concat: {
-  slides: {
-    src: [
-      'components/reveal.js/lib/js/head.min.js',
-      'components/reveal.js/js/reveal.min.js'
-    ],
-    dest: 'src/js/slides.min.js'
-  }
-}
+grunt.loadNpmTasks('grunt-devtools');
 						</code></pre>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-concat">github.com/gruntjs/grunt-contrib-concat</a></p>
-					</section>
-
-					<section>
-						<h2>Uglify</h2>
-						<h3>Minify Javascript files</h3>
 						<pre class="prompt bash"><code data-trim>
-$ npm install grunt-contrib-uglify --save-dev
+$ grunt devtools
 						</code></pre>
-						<pre class="javascript"><code data-trim>
-uglify: {
-  markdown: {
-    src: [
-      'components/reveal.js/plugin/markdown/marked.js',
-      'components/reveal.js/plugin/markdown/markdown.js'
-    ],
-    dest: 'src/js/markdown.min.js'
-  }
-}
-						</code></pre>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-uglify">github.com/gruntjs/grunt-contrib-uglify</a></p>
-					</section>
-
-					<section>
-						<h2>CSS Min</h2>
-						<h3>Compress CSS files with clean-css</h3>
-						<pre class="prompt bash"><code data-trim>
-$ npm install grunt-contrib-cssmin --save-dev
-						</code></pre>
-						<pre class="javascript"><code data-trim>
-cssmin: {
-  extraCss: {
-    src: [
-      'components/reveal.js/css/theme/night.css', 
-      'components/reveal.js/lib/css/zenburn.css'
-    ],
-    dest: 'src/css/extra.min.css'
-  }
-}
-						</code></pre>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-cssmin">github.com/gruntjs/grunt-contrib-cssmin</a></p>
+						<p>Open Chrome Developer tools. Find the Grunt tab</p>
 					</section>
 
 					<section>
 						<img class="logo less-logo" src="images/min/less-logo.png" alt="" />
 						<img class="logo sass-logo" src="images/min/sass-logo.png" alt="" />
 						<h3>Compile files to CSS</h3>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-less">github.com/gruntjs/grunt-contrib-less</a> / <a href="https://github.com/gruntjs/grunt-contrib-sass">grunt-contrib-sass</a></p>
 						<pre class="prompt bash"><code data-trim>
 $ npm install grunt-contrib-less --save-dev
-
-$ npm install grunt-contrib-sass --save-dev
 						</code></pre>
 						<pre class="javascript"><code data-trim>
 less: {
@@ -427,16 +353,19 @@ less: {
   }
 }
 						</code></pre>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-less">github.com/gruntjs/grunt-contrib-less</a> / <a href="https://github.com/gruntjs/grunt-contrib-sass">grunt-contrib-sass</a></p>
 					</section>
 
 					<section>
 						<h2>CSS Sprites</h2>
 						<h3>Generate sprites with Glue</h3>
+						<p><a href="https://bitbucket.org/carkraus/grunt-glue">bitbucket.org/carkraus/grunt-glue</a></p>
+						<a class="sprites-demo clearfix" href="images/sprites/gb.png" target="_blank">
+							<div class="icon icon-gb-104G"></div>
+							<div class="icon icon-gb-124G"></div>
+							<div class="icon icon-gb-154G"></div>
+						</a>
 						<pre class="prompt bash"><code data-trim>
-# Glue requires Python and Pillow
-$ pip install glue
-
+# Requires Glue for Python
 $ npm install grunt-glue --save-dev
 						</code></pre>
 						<pre class="javascript"><code data-trim>
@@ -447,45 +376,13 @@ glue: {
   }
 }
 						</code></pre>
-						<p><a href="https://bitbucket.org/carkraus/grunt-glue">bitbucket.org/carkraus/grunt-glue</a></p>
-						<br>
-						<a class="sprites-demo clearfix" href="images/sprites/gb.png" target="_blank">
-							<div class="icon icon-gb-104G"></div>
-							<div class="icon icon-gb-124G"></div>
-							<div class="icon icon-gb-154G"></div>
-						</a>
-					</section>
-
-					<section>
-						<h2>Optimise Images</h2>
-						<h3>Minify PNG and JPEG images</h3>
-						<pre class="prompt bash"><code data-trim>
-$ npm install grunt-contrib-imagemin --save-dev
-						</code></pre>
-						<pre class="javascript"><code data-trim>
-imagemin: {
-  png: {
-    options: {
-      optimizationLevel: 7
-    },
-    files: [
-      {
-        expand: true,
-        cwd: 'assets/images/',
-        src: ['**/*.png'],
-        dest: 'src/images/min/',
-        ext: '.png'
-      }
-    ]
-  }
-}
-						</code></pre>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-imagemin">github.com/gruntjs/grunt-contrib-imagemin</a></p>
 					</section>
 
 					<section>
 						<h2>Watch</h2>
 						<h3>Run tasks whenever watched files change</h3>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-watch">github.com/gruntjs/grunt-contrib-watch</a> / <a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei">Livereload</a></p>
+						<blockquote class="watch-demo">Demo</blockquote>
 						<pre class="prompt bash"><code data-trim>
 $ npm install grunt-contrib-watch --save-dev
 						</code></pre>
@@ -497,66 +394,116 @@ watch: {
   less: {
     files: 'src/less/**/*.less',
     tasks: ['less:compile', 'concat:slidesCss']
-  },
-  images: {
-    files: 'assets/**/*.png',
-    tasks: ['glue', 'less:compile', 'concat:slidesCss']
   }
 }
 						</code></pre>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-watch">github.com/gruntjs/grunt-contrib-watch</a></p>
-						<br>
-						<p class="fragment watch-demo">Watch demo with <a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei">Livereload</a></p>
+					</section>
+
+				</section>
+
+				<section data-background="#202020">
+					<section>
+						<h1 class="higher">Build</h1>
 					</section>
 
 					<section>
-						<h2><img class="logo chrome-logo" src="images/min/chrome-logo.png" alt="" /> Developer Tools</h2>
-						<h3>Grunt Task Runner Extension</h3>
+						<h2>Concat</h2>
+						<h3>Concatenate files</h3>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-concat">github.com/gruntjs/grunt-contrib-concat</a></p>
 						<pre class="prompt bash"><code data-trim>
-$ npm install grunt-devtools --save-dev
+$ npm install grunt-contrib-concat --save-dev
 						</code></pre>
 						<pre class="javascript"><code data-trim>
-grunt.loadNpmTasks('grunt-devtools');
+concat: {
+  slides: {
+    src: [
+      'components/reveal.js/.../head.min.js',
+      'components/reveal.js/.../reveal.min.js'
+    ],
+    dest: 'src/js/slides.min.js'
+  }
+}
 						</code></pre>
+					</section>
+
+					<section>
+						<h2>Uglify</h2>
+						<h3>Minify Javascript files</h3>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-uglify">github.com/gruntjs/grunt-contrib-uglify</a></p>
 						<pre class="prompt bash"><code data-trim>
-$ grunt devtools
+$ npm install grunt-contrib-uglify --save-dev
 						</code></pre>
-						<p>Open Chrome Dev tools. Find the Grunt tab</p>
-						<p><a href="https://github.com/vladikoff/grunt-devtools">github.com/vladikoff/grunt-devtools</a></p>
+						<pre class="javascript"><code data-trim>
+uglify: {
+  markdown: {
+    src: [
+      'components/.../markdown/marked.js',
+      'components/.../markdown/markdown.js'
+    ],
+    dest: 'src/js/markdown.min.js'
+  }
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>CSS Min</h2>
+						<h3>Compress CSS files with clean-css</h3>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-cssmin">github.com/gruntjs/grunt-contrib-cssmin</a></p>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-cssmin --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+cssmin: {
+  extraCss: {
+    src: [
+      'components/reveal.js/.../night.css', 
+      'components/reveal.js/.../zenburn.css'
+    ],
+    dest: 'src/css/extra.min.css'
+  }
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Optimise Images</h2>
+						<h3>Minify PNG and JPEG images</h3>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-imagemin">github.com/gruntjs/grunt-contrib-imagemin</a></p>
+						<pre class="prompt bash"><code data-trim>
+$ npm install grunt-contrib-imagemin --save-dev
+						</code></pre>
+						<pre class="javascript"><code data-trim>
+imagemin: {
+  png: {
+    options: {optimizationLevel: 7},
+    files: [{
+        expand: true,
+        cwd: 'assets/images/',
+        src: ['**/*.png'],
+        dest: 'src/images/min/',
+        ext: '.png'
+      }]
+						</code></pre>
 					</section>
 
 					<section>
 						<h2>Copy</h2>
 						<h3>Copy files and folders</h3>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-copy">github.com/gruntjs/grunt-contrib-copy</a></p>
 						<pre class="prompt bash"><code data-trim>
 $ npm install grunt-contrib-copy --save-dev
 						</code></pre>
 						<pre class="javascript"><code data-trim>
 copy: {
-  notesJs: {
-    expand: true,
-    cwd: 'components/reveal.js/plugin/notes/',
-    src: ['notes.html', 'notes.js'],
-    dest: 'src/js/notes/'
-  }
-}
+  build: {
+    files: [{ 
+      expand: true, 
+      cwd: 'src/js', 
+      src: ['**'], 
+      dest: 'build/js' 
+    }, ... ]
 						</code></pre>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-copy">github.com/gruntjs/grunt-contrib-copy</a></p>
-					</section>
-
-					<section>
-						<h2>Clean</h2>
-						<h3>Clear files and folders</h3>
-						<pre class="prompt bash"><code data-trim>
-$ npm install grunt-contrib-clean --save-dev
-						</code></pre>
-						<pre class="javascript"><code data-trim>
-clean: {
-  src: ['src/css', 'src/js', 'src/images/sprites', 'src/less/sprites'],
-  build: ['build']
-}
-						</code></pre>
-						<p><a href="https://github.com/gruntjs/grunt-contrib-clean">github.com/gruntjs/grunt-contrib-clean</a></p>
 					</section>
 
 					<section>
@@ -576,18 +523,19 @@ clean: {
 						<h2>Unit Tests</h2>
 						<p>Run in a headless PhantomJS instance</p>
 						<br>
-						<h3>QUnit</h3>
+						<img class="logo qunit-logo" src="images/min/qunit-logo.png" alt="qunit" />
 						<p><a href="https://github.com/gruntjs/grunt-contrib-qunit">github.com/gruntjs/grunt-contrib-qunit</a></p>
-						<br>
-						<h3>Jasmine</h3>
+						<img class="logo jasmine-logo" src="images/svg/jasmine-logo.svg" alt="jasmine" />						
 						<p><a href="https://github.com/gruntjs/grunt-contrib-jasmine">github.com/gruntjs/grunt-contrib-jasmine</a></p>
-						<br>
-						<h3>Mocha</h3>
+						<img class="logo mocha-logo" src="images/svg/mocha-logo.svg" alt="mocha" />
 						<p><a href="https://github.com/kmiyashiro/grunt-mocha">github.com/kmiyashiro/grunt-mocha</a></p>
 					</section>
 
 					<section>
 						<h2>Utilities</h2>
+						<br>
+						<h3>Clear files and folders</h3>
+						<p><a href="https://github.com/gruntjs/grunt-contrib-clean">github.com/gruntjs/grunt-contrib-clean</a></p>
 						<br>
 						<h3>Search and replace</h3>
 						<p><a href="https://github.com/jharding/grunt-sed">github.com/jharding/grunt-sed</a></p>
@@ -607,30 +555,42 @@ require('load-grunt-tasks')(grunt);
 						<br>
 						<h3>Run multiple tasks in parallel</h3>
 						<p><a href="https://github.com/sindresorhus/grunt-concurrent">github.com/sindresorhus/grunt-concurrent</a></p>
+						<br>
+						<h3>Run tasks only on modified files</h3>
+						<p><a href="https://github.com/tschaub/grunt-newer">github.com/tschaub/grunt-newer</a></p>
+					</section>
+				</section>
+
+				<section data-background="#202020">
+					<section>
+						<h2>Not enough?</h2>
 					</section>
 
 					<section>
-						<h2>Do you need more?</h2>
-					</section>
-
-					<section>
-						<h2>Write your own plugins!</h2>
-						<img src="images/gif/neverending.gif" alt="">
+						<blockquote>I'm a <b class="higher">javascript</b> engineer!</blockquote>
+						<div class="fragment">
+							<img src="images/gif/neverending.gif" alt="">
+							<h3>Write your plugins ;)</h3>
+						</div>
 					</section>
 				</section>
 
 				<section class="section-grunt" data-background="#FFF">
 					<section>
 						<h2>Alternatives?</h2>
+					</section>
+					
+					<section>
 						<img class="logo gulp-logo" src="images/min/gulp-logo.png" alt="" />
 						<h3>gulp.js</h3>
 						<p>The streaming build system</p>
-					</section>
-					<section>
-						<h2>Code vs Config</h2>
+						<br>
 						<pre class="prompt bash"><code data-trim>
 $ npm install -g gulp
 						</code></pre>
+					</section>
+					<section>
+						<h2>Code over Config</h2>
 						<pre class="javascript"><code data-trim>
 var gulp = require('gulp'),
   minify = require('gulp-minify-css');
@@ -648,12 +608,16 @@ gulp.task('styles', function() {
 					</section>
 				</section>
 
-				<section data-background="#475C54">
+				<section data-background="#202020">
 					<h2>Grunt vs Gulp</h2>
-					<img src="images/gif/fight.gif" alt="">
 					<h3>Okay, but which is better?</h3>
+					<img class="fragment" src="images/gif/fight.gif" alt="">
 					<br>
-					<h2 class="fragment">It's a matter of preference</h2>	
+					<h3 class="fragment">It's a matter of preference</h3>	
+				</section>
+
+				<section data-background="#202020">
+					<h1 class="higher">Scaffold</h1>
 				</section>
 
 				<section class="section-yeoman" data-background="#5aadbb">
@@ -689,12 +653,16 @@ $ yo webapp
 						<br>
 						<br>
 						<div class="yeoman-generators">
-							<img src="images/min/bootstrap-logo.png" class="logo" alt="">
 							<img src="images/min/angular-logo.png" class="logo" alt="">
-							<img src="images/min/ember-logo.png" class="logo logo-ember" alt="">
+							<img src="images/min/ember-logo.png" class="logo logo-h" alt="">
 							<img src="images/min/backbone-logo.png" class="logo" alt="">
+							<img src="images/min/bootstrap-logo.png" class="logo" alt="">
+							<img src="images/svg/polymer-logo.svg" class="logo" alt="">
+							<br>
+							<img src="images/svg/nodejs-logo.svg" class="logo logo-h" alt="">
+							<img src="images/min/jquery-logo.png" class="logo logo-h" alt="">
 							<img src="images/min/firefox-os-logo.png" class="logo" alt="">
-							<img src="images/min/jekyll-logo.png" class="logo logo-jekyll" alt="">
+							<img src="images/min/jekyll-logo.png" class="logo logo-h" alt="">
 						</div>
 					</section>
 				</section>

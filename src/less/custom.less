@@ -14,15 +14,6 @@
 	width: 50%;
 }
 
-pre code {
-	color: @defaultCodeColor;
-	background: @defaultCodeBg;
-}
-
-.prompt code {
-	padding: 15px !important;
-}
-
 .reveal section {
 	h1, h2, h3 {
 		line-height: 1em;
@@ -38,7 +29,7 @@ pre code {
 	}
 	.less-logo,
 	.sass-logo {
-		max-width: 175px;
+		max-width: 140px;
 	}
 	.gulp-logo {
 		max-height: 300px;
@@ -46,6 +37,18 @@ pre code {
 	.chrome-logo {
 		max-height: 60px;
 		margin: 0;
+	}
+	.chrome-window {
+		border: 0;
+		border-radius: 5px;
+	}
+	.qunit-logo,
+	.jasmine-logo {
+		max-height: 70px;
+	}
+	.mocha-logo {
+		margin: 5px 0 0;
+		max-height: 125px;
 	}
 	.watch-demo {
 		padding: 5px 0;
@@ -103,9 +106,34 @@ pre code {
 		max-width: 100px;
 		vertical-align: middle;
 		margin: 15px;
-		&-ember,
-		&-jekyll {
+		&-h, {
 			max-width: 150px;
+		}
+	}
+}
+
+.reveal {
+	pre {
+		font-size: 1em;
+		code {
+			color: @defaultCodeColor;
+			background: @defaultCodeBg;
+		}
+		.comment {
+			color: #9DC29D;
+		}
+		.string {
+			color: #DDB6B6;
+		}
+	}
+	.prompt{
+		code {
+			padding: 15px;
+		}
+	}
+	.prompt-no-comments {
+		.comment {
+			color: @defaultCodeColor;
 		}
 	}
 }
