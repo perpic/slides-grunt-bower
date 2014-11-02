@@ -183,10 +183,6 @@ $ npm install
 						<pre class="prompt bash"><code data-trim>
 $ npm install -g bower
 						</code></pre>
-
-						<aside class="notes">
-					        Oh hey, these are some notes
-					    </aside>
 					</section>
 						
 					<section>
@@ -276,10 +272,6 @@ $ npm init
 # Install Grunt
 $ npm install grunt --save-dev
 						</code></pre>
-
-						<aside class="notes">
-					        This file is used by npm to store metadata for projects published as npm modules. You will list grunt and the Grunt plugins your project needs as devDependencies in this file.
-					    </aside>
 					</section>
 
 					<section>
@@ -302,10 +294,6 @@ module.exports = function(grunt) {
 $ grunt
 $ grunt concat
 						</code></pre>
-
-						<aside class="notes">
-							grunt.file.readJSON('package.json') imports the JSON metadata stored in package.json into the grunt config
-						</aside>						
 					</section>
 
 					<section>
@@ -601,10 +589,6 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('./dist/'));
 });
 						</code></pre>
-
-						<aside class="notes">
-							Gulp’s syntax is very different to Grunt as it takes advantage of Node.js streaming syntax to pass results from one function to the next. This makes it very intuitive and allows you to easily build a workflow that is easy to understand for developers compared to Grunt’s configuration based workflow.
-						</aside>						
 					</section>
 				</section>
 
