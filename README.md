@@ -9,9 +9,7 @@
 
 ## Install Bower and components
 
-<div style="float:right;width:150px;text-align:center">
-  <img height="75"  src="http://bower.io/img/bower-logo.png">
-</div>
+<img height="75" src="http://bower.io/img/bower-logo.png">
 
     $ npm install -g bower
 
@@ -19,9 +17,7 @@
 
 ## Install Grunt and plugins
 
-<div style="float:right;width:150px;text-align:center">
-  <img height="75"  src="http://gruntjs.com/img/grunt-logo.png">
-</div>
+<img height="75" src="http://gruntjs.com/img/grunt-logo.png">
 
     $ npm install -g grunt-cli
 
