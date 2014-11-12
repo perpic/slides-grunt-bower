@@ -2,15 +2,29 @@
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-## Requirements
+## Requires
 
-* Install nodejs and npm
-* Install Python and [Glue](http://glue.readthedocs.org/en/latest/installation.html)
+* [nodejs](http://nodejs.org/)
+* Python + [Glue](http://glue.readthedocs.org/en/latest/installation.html)
 
-## Installation
+## Install Bower and components
 
-* Install bower <code>$ npm install -g bower</code>
-* Install bower packages <code>$ bower install</code>
-* Install grunt-cli <code>$ npm install -g grunt-cli</code>
-* Install npm packages <code>$ npm install</code>
-* Run grunt <code>$ grunt</code>
+<div style="float:right;width:150px;text-align:center">
+  <img height="75"  src="http://bower.io/img/bower-logo.png">
+</div>
+
+    $ npm install -g bower
+
+    $ bower install
+
+## Install Grunt and plugins
+
+<div style="float:right;width:150px;text-align:center">
+  <img height="75"  src="http://gruntjs.com/img/grunt-logo.png">
+</div>
+
+    $ npm install -g grunt-cli
+
+    $ npm install
+
+    $ grunt
